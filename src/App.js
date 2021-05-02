@@ -33,7 +33,10 @@ const finalSpaceCharacters = [
 function App() {
   const [characters,setCharacters] = useState(finalSpaceCharacters)
   function handleOnDragEnd(result) {
-    console.log(result)
+    const items = Array.from(characters);
+    const [reorderItems] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index,0,reorderItems)
+    setCharacters(items);
   }
 
   return (
