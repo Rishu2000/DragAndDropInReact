@@ -1,4 +1,5 @@
 import React from 'react';
+import {DragDropContext} from "react-beautiful-dnd";
 import './App.css';
 
 const finalSpaceCharacters = [
@@ -34,6 +35,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Final Space Characters</h1>
+        <DragDropContext>
         <ul className="characters">
           {finalSpaceCharacters.map(({id, name, thumb}) => {
             return (
@@ -48,6 +50,7 @@ function App() {
             );
           })}
         </ul>
+        </DragDropContext>
       </header>
       <p>
         Images from <a href="https://final-space.fandom.com/wiki/Final_Space_Wiki">Final Space Wiki</a>
