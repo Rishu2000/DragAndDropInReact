@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
 import './App.css';
 
@@ -31,15 +31,20 @@ const finalSpaceCharacters = [
 ]
 
 function App() {
+  const [characters,setCharacters] = useState(finalSpaceCharacters)
+  function handleOnDragEnd(result) {
+    console.log(result)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Final Space Characters</h1>
-        <DragDropContext>
+        <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="characters">
             {(provided) => (
         <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
-          {finalSpaceCharacters.map(({id, name, thumb}, index) => {
+          {characters.map(({id, name, thumb}, index) => {
             return (
               <Draggable key={id} draggableId={id} index={index}>
                 {(provided) => (
